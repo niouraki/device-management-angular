@@ -17,3 +17,9 @@
 
 8. Basic responsiveness
 9. Angular testing
+
+## Styling
+1. Bootstrap
+
+## Back end
+1. Firebase

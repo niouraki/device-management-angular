@@ -1,0 +1,44 @@
+<div class="container fluid margin-top-20">
+    <h1 class="text-center">{{ title }}</h1>
+    <p class="text-center">{{ subtitle }}</p>
+    <form class="device-form" [formGroup]="myform" (keydown)="submitOnEnter($event)" (ngSubmit)="getdata()">
+        <div class="form-group">
+            <label for="">Type</label>
+            <select name="type" class='form-control' formControlName="type">
+                <option value="mobile">Mobile</option>
+                <option value="laptop">Laptop</option>
+                <option value="notebook">Notebook</option>
+                <option value="tablet">Tablet</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">Serial number</label>
+            <input type="text" name="serialNumber" class="form-control" formControlName="serialNumber" placeholder=" XXXXX-NNNNN">
+        </div>
+
+        <div class="form-group">
+            <textarea
+                name="description"
+                rows="10"
+                cols="30"
+                class="form-control"
+                formControlName="description"
+                placeholder="description">
+            </textarea>
+        </div>
+        <button (click)="myform.reset()" type="reset" class="btn btn-info mr-3 mt-3">Cancel</button>
+        <button [disabled]="!myform.valid" type='submit' class="btn btn-info mt-3">{{btnMsg}}</button>
+    </form>
+
+    <div [class.show]="showSuccessMessage" class="alert alert-success alert-message alert-dismissible fade" role="alert">
+        {{successMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+
+    <div [class.show]="showFailureMessage" class="alert alert-danger alert-message alert-dismissible fade" role="alert">
+        {{failureMessage}}
+    </div>
+</div>

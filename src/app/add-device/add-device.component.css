@@ -1,0 +1,13 @@
+.device-form {
+    width: 70%;
+    margin: 0 auto;
+    
+}
+.margin-top-20 {
+    margin-top: 10vh;
+}
+.alert-message {
+    position: absolute;
+    top: 10vh;
+    right: 2%
+}

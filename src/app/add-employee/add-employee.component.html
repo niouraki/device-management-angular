@@ -1,0 +1,28 @@
+<div class="container fluid margin-top-20">
+    <h1 class="text-center">{{ title }}</h1>
+    <p class="text-center">{{ subtitle }}</p>
+    <form class="user-form" [formGroup]="myform" (keydown)="submitOnEnter($event)" (ngSubmit)="getdata()">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" name="name" class="form-control" id="name" formControlName="name" placeholder="John Doe">
+        </div>
+
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="email" class="form-control" id="email" formControlName="email" placeholder="john.doe@gmail.com">
+        </div>
+        <button (click)="myform.reset()" type="reset" class="btn btn-info mr-3 mt-3">Cancel</button>
+        <button [disabled]="!myform.valid" type='submit' class="btn btn-info mt-3">{{btnMsg}}</button>
+    </form>
+
+    <div [class.show]="showSuccessMessage" class="alert alert-success alert-message alert-dismissible fade" role="alert">
+        {{successMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+
+    <div [class.show]="showFailureMessage" class="alert alert-danger alert-message alert-dismissible fade" role="alert">
+        {{failureMessage}}
+    </div>
+</div>

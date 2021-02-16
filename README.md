@@ -1,27 +1,18 @@
 # DeviceManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
+## To run this project
+1. Clone the project using git clone
+2. Install the project using npm install
+3. To run the development serve use ng serve
 
-## Development server
+## Functionality
+1. The user is able to create/update and delete employees
+2. The user is able to create/update and delete available devices
+3. The user is able to see details of individual employees and available devices
+4. The user is able to assign devices to employees. When a device is assigned, it is removed from available devices
+5. The user is able to unassign devices from employees. When a device is unassigned, it is added to available devices
+6. When an employee is deleted and if they have assigned devices, all of them are added to available devices
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+7. Local storage is used to achieve data persistence when page is refreshed in user and device details
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+8. Basic responsiveness

@@ -1,0 +1,104 @@
+<div class="container fluid empoyee-card">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title title">{{myEmployee.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{myEmployee.email}}</h6>
+          <hr>
+          <div>
+            <h5 class="card-title display-title mr-4 mb-5">List of assigned devices</h5>
+            <span class="display-btn">
+              <button class="btn btn-outline-info display-title btn-sm d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target="#assignDeviceModal">Assign device</button>
+            </span>
+            
+            
+            <div class="modal fade" id="assignDeviceModal" tabindex="-1" role="dialog" aria-labelledby="assignDeviceModal" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Available Devices</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="device-list">
+                      <li *ngFor="let device of availableDevices" class="device-item">
+                        <span class="device-item-detail mt-2 mb-1"><span class="device-item-title">Device type: </span>{{device.type}}</span>
+                        <span class="device-item-detail mb-1"><span class="device-item-title">Device serial number: </span>{{device.serialNumber}}</span>
+                        <span class="device-item-detail mb-1"><span class="device-item-title">Device description: </span>{{device.description}}</span>
+                        <button class="btn btn-outline-info display-title btn-sm mb-2" (click)="assignDevice(device, myEmployee)" data-dismiss="modal">Select device</button>
+                      </li>
+                  </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul *ngIf="myEmployee.devices; else elseNoDevices" class="device-list">
+              <li *ngFor="let device of myEmployee.devices" class="device-item">
+                <span class="device-item-detail mt-2 mb-1"><span class="device-item-title">Device type: </span>{{device.type}}</span>
+                <span class="device-item-detail mb-1"><span class="device-item-title">Device serial number: </span>{{device.serialNumber}}</span>
+                <span class="device-item-detail mb-1"><span class="device-item-title">Device description: </span>{{device.description}}</span>
+                <button class="btn btn-outline-info display-title btn-sm mb-2" (click)="unassignDevice(device, myEmployee)">Unassign device</button>
+              </li>
+          </ul>
+          <ng-template #elseNoDevices>
+            <p class="text-center">
+              There are no assigned devices for this employee
+            </p>
+          </ng-template>
+          <div class="mt-5">
+            <span class="display-btn">
+              <button class="btn btn-info mr-4 d-none d-sm-none d-md-block d-lg-block d-xl-block" (click)="updateEmployee(myEmployee.id)">Update employee</button>
+            </span>
+            <span class="display-btn">
+              <button class="btn btn-info d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target="#deleteDeviceModal">Delete employee</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="employee-actions btn-group dropleft d-block d-sm-block d-md-none d-lg-none d-xl-none">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#assignDeviceModal">Assign device</a>
+            <a class="dropdown-item" (click)="updateEmployee(myEmployee.id)">Update employee</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteDeviceModal">Delete employee</a>
+          </div>
+        </div>
+      </div>  
+</div>
+
+<div [class.show]="showSuccessMessage" class="alert alert-success alert-message alert-dismissible fade" role="alert">
+  {{successMessage}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div [class.show]="failureMessage" class="alert alert-danger alert-message alert-dismissible fade" role="alert">
+  {{showFailureMessage}}
+</div>
+
+<div class="modal fade" id="deleteDeviceModal" tabindex="-1" role="dialog" aria-labelledby="deleteDeviceModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteDeviceModalTitle">Are you sure you want to delete this employee?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>All their assigned devices will be moved to the available ones</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEmployee(myEmployee.id)">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

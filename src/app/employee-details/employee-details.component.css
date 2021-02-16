@@ -1,0 +1,42 @@
+.empoyee-card {
+    margin-top: 10vh;
+}
+.display-title {
+    display: inline-block;
+}
+.card-actions {
+    margin-top: 40px!important;
+}
+.alert-message {
+    position: absolute;
+    top: 10vh;
+    right: 2%
+}
+.device-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+.device-item {
+    border: 1px solid #D3D3D3;
+    padding: 5px;
+    border-radius: 5px;
+}
+.device-item:not(:last-child) {
+   margin-bottom: 25px;
+}
+.device-item-detail {
+    display: block;
+}
+.device-item-title {
+    font-size: 18px;
+    color: #808080;
+}
+.employee-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.display-btn {
+    display: inline-block;
+}

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-dark nav-bg">
+    <div class="container-fluid my-3">
+        <form class="justify-content-start">
+            <button (click)="openSidebar()" class="btn btn btn-info" type="button">Toggle Sidebar</button>
+        </form>
+        <ul class="nav mr-auto pl-4 d-none d-sm-block">
+            <li class="nav-item">
+              <a class="nav-link text-info" href="#" [routerLink]="['home']">Home</a>
+            </li>
+        </ul>
+        <form class="justify-content-end d-sm-none d-md-block d-none">
+            <button class="btn btn-outline-info mr-3" type="button" [routerLink]="['add-employee']">Create Employee</button>
+            <button class="btn btn-outline-info" type="button" [routerLink]="['add-device']">Create device</button>
+        </form>
+    </div>
+</nav>
+
+<div class="side-bar" *ngIf="showSidebar">
+    <fa-icon (click)="closeSidebar()" icon="arrow-left" class="arrow mt-4"></fa-icon>
+    <ul class="nav flex-column mt-4">
+      <li class="nav-item">
+        <a class="nav-link text-white d-block d-sm-none d-md-none d-lg-none d-xl-none" href="#" role="button" [routerLink]="['home']">Home</a>
+      </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown">Employees</a>
+          <div class="dropdown-menu" *ngIf="myEmployees.length > 0">
+            <a class="dropdown-item" href="#" *ngFor="let employee of myEmployees" (click)="passToLocalStorageEmployee(employee)" [routerLink]="['employee-details', employee.id]">{{employee.name}}</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown">Devices</a>
+          <div class="dropdown-menu" *ngIf="myEmployees.length > 0">
+            <a class="dropdown-item" href="#" *ngFor="let device of myDevices" (click)="passToLocalStorageDevice(device)" [routerLink]="['device-details', device.id]">{{device.type}}</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white d-block d-md-none d-lg-none d-xl-none" href="#" role="button" [routerLink]="['add-employee']">Create Employee</a>
+          <a class="nav-link text-white d-block d-md-none d-lg-none d-xl-none" href="#" role="button" [routerLink]="['add-device']">Create device</a>
+        </li>
+      </ul>
+    </div>
+
+

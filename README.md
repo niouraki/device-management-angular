@@ -16,3 +16,4 @@
 7. Local storage is used to achieve data persistence when page is refreshed in user and device details
 
 8. Basic responsiveness
+9. Angular testing
